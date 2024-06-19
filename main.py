@@ -23,47 +23,7 @@ def assign_val():
     }
     return m_data
 
-@app.route("/movies")
-def get_movie():
-    movie_data = assign_val()
 
-    return jsonify({
-        "data": movie_data,
-        "status": "success"
-    })
-
-@app.route("/like")
-def liked_movie():
-    global all_movies
-    movie_data=assign_val()
-    liked_movies.append(movie_data)
-    all_movies.drop([0], inplace=True)
-    all_movies = all_movies.reset_index(drop=True)
-    return jsonify({
-        "status": "success"
-    })
-
-@app.route('/liked')
-def liked():
-    global liked_movies    
-
-    return jsonify({
-        'data' : liked_movies , 
-        'status' : 'success'
-    })
-
-@app.route("/dislike")
-def unliked_movie():
-    global all_movies
-
-    movie_data=assign_val()
-    not_liked_movies.append(movie_data)
-    all_movies.drop([0], inplace=True)
-    all_movies=all_movies.reset_index(drop=True)
-    
-    return jsonify({
-        "status": "success"
-    })
 
 
 
